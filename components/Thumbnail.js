@@ -2,11 +2,11 @@ import Image from 'next/image'
 import React from 'react'
 import { BASE_URL } from '@/utils/BASE_URL'
 import { ThumbUpIcon } from '@heroicons/react/outline'
+import { forwardRef } from 'react'
 
-const Thumbnail = ({result}) => {
-    console.log(result)
+const Thumbnail = forwardRef(({result}, ref) => {
   return (
-    <div className='p-2 transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 group cursor-pointer relative w-full' style={{ width: '100%', }}>
+    <div ref={ref} className='p-2 transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 group cursor-pointer relative w-full' style={{ width: '100%', }}>
         <Image 
             src={`${BASE_URL}${result.backdrop_path  || result.poster_path}` || `${BASE_URL}${result.poster_path}`}
             className='object-cover	'
@@ -28,6 +28,6 @@ const Thumbnail = ({result}) => {
         </div>
     </div>
   )
-}
+})
 
 export default Thumbnail
